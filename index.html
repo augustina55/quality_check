@@ -360,8 +360,29 @@ function submitForm() {
   })
   .then(res => res.json())
   .then(res => {
-    alert("Saved successfully ✅");
-  })
+  alert("Saved successfully ✅");
+
+  // Clear text inputs
+  document.getElementById("coachName").value = "";
+  document.getElementById("webinarDate").value = "";
+  document.getElementById("batchCode").value = "";
+  document.getElementById("reviewedBy").value = "";
+  document.getElementById("comments").value = "";
+  document.getElementById("adherence").value = "";
+
+  // Reset rating (optional to default 10)
+  document.getElementById("rating").value = "10";
+
+  // Uncheck all checkboxes
+  document.querySelectorAll('#checklist input').forEach(cb => cb.checked = false);
+
+  // Clear video input + players
+  document.getElementById("videoLink").value = "";
+  document.getElementById("ytPlayer").style.display = "none";
+  document.getElementById("videoPlayer").style.display = "none";
+  document.getElementById("ytPlayer").src = "";
+  document.getElementById("videoPlayer").src = "";
+})
   .catch(err => {
     alert("Error saving ❌");
   });
